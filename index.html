@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nour Soft</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap5/css/all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid bg-custom">
+        <h1 class="text-center p-5 pb-0 fs-3">Nour Soft Store</h1>
+        <h2 class="text-center p-4 pt-1 fs-5">Store Mangement system</h2>
+        <div class="container">
+            <div class="row pb-5">
+                <div class="input-field col-12 justify-content-center">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search" id="search" onkeyup="search(this.value) ">
+                </div>
+            </div>
+            <div class="row pb-lg-4 pb-0">
+                <div class="col-lg-4 col-md-6 pb-3 pb-lg-0 d-flex justify-content-center">
+                    <input type="text" placeholder="Name" id="name">
+                </div>
+                <div class="col-lg-4 col-md-6 pb-3 pb-lg-0 d-flex justify-content-center">
+                    <input type="text" placeholder="Type" id="type">
+                </div>
+                <div class="col-lg-4 col-md-6 pb-3 pb-lg-0 d-flex justify-content-center">
+                    <input type="date" id="date">
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-lg-3 pb-lg-0 pb-3">
+                    <input type="number" placeholder="Price" id="price" onkeyup="getTotal()">
+                </div>
+                <div class="col-lg-3 pb-lg-0 pb-3">
+                    <input type="number" placeholder="Taxes" id="taxes" onkeyup="getTotal()">
+                </div>
+                <div class="col-lg-2 pb-lg-0 pb-3">
+                    <input type="number" placeholder="Discount" id="discount" onkeyup="getTotal()">
+                </div>
+                <div class="col-lg-2 pb-lg-0 pb-3">
+                    <input type="number" placeholder="Quantity" id="quantity">
+                </div>
+                <div class="col-lg-2 pb-lg-0 d-flex justify-content-center">
+                    <div class="total ms-2">
+                        total: <span id="total"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col-lg-12">
+                    <button id="submit">Add New Device</button>
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col-lg-12" id="Delete">
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Taxes</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="Tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+
+</html>
