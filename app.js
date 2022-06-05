@@ -1,20 +1,20 @@
-let parentTotal = document.querySelector(".total");
-let price = document.getElementById("price");
-let taxes = document.getElementById("taxes");
-let quantity = document.getElementById("quantity");
-let discount = document.getElementById("discount");
-let total = document.getElementById("total");
-let submit = document.getElementById("submit");
-let pname = document.getElementById("name");
-let type = document.getElementById("type");
-let date = document.getElementById("date");
-let tbody = document.getElementById("Tbody");
-let Delete = document.getElementById("Delete");
-let Search = document.getElementById("search");
-let dataProduct;
-let mood = "add";
-let indx;
-//get price//
+let parentTotal = document.querySelector(".total"),
+  price = document.getElementById("price"),
+  taxes = document.getElementById("taxes"),
+  quantity = document.getElementById("quantity"),
+  discount = document.getElementById("discount"),
+  total = document.getElementById("total"),
+  submit = document.getElementById("submit"),
+  pname = document.getElementById("name"),
+  type = document.getElementById("type"),
+  date = document.getElementById("date"),
+  tbody = document.getElementById("Tbody"),
+  Delete = document.getElementById("Delete"),
+  Search = document.getElementById("search"),
+  dataProduct,
+  mood = "add",
+  indx;
+//---------------------get price------------------
 function getTotal() {
   if (price.value != "") {
     total.innerHTML = +price.value + +taxes.value - +discount.value;
@@ -24,7 +24,7 @@ function getTotal() {
     parentTotal.style.background = "#f00";
   }
 }
-// create new product & save products to localStorage
+//---------------create new product & save products to localStorage-------------
 if (localStorage.product != null) {
   dataProduct = JSON.parse(localStorage.product);
 } else {
@@ -41,8 +41,6 @@ submit.addEventListener("click", () => {
     Quantity: quantity.value,
     Total: total.innerHTML,
   };
-  //save in local storage
-  localStorage.setItem("product", JSON.stringify(dataProduct));
   showData();
   if (
     pname.value != "" &&
@@ -51,8 +49,8 @@ submit.addEventListener("click", () => {
     price.value != "" &&
     quantity.value <= 100
   ) {
+    //---------counting---------
     if (mood === "add") {
-      //counting
       if (quantity.value > 1) {
         for (let i = 0; i < newProduct.Quantity; i++) {
           dataProduct.push(newProduct);
@@ -72,15 +70,17 @@ submit.addEventListener("click", () => {
     if (pname.value == "") {
       pname.focus();
     } else if (type.value == "") {
-      pname.focus();
+      type.focus();
     } else if (date.value == "") {
-      pname.focus();
+      date.focus();
     } else if (price.value == "") {
-      pname.focus();
+      price.focus();
     } else if (quantity > 100) {
-      pname.focus();
+      quantity.focus();
     }
   }
+  //--------save in local storage------------//
+  localStorage.setItem("product", JSON.stringify(dataProduct));
 });
 //claer
 function clearInputs() {
@@ -92,7 +92,7 @@ function clearInputs() {
   quantity.value = "";
   total.innerHTML = "";
 }
-//read (show function)
+//---------read (show function)---------
 function showData() {
   let table = "";
   for (let i = 0; i < dataProduct.length; i++) {
@@ -124,13 +124,13 @@ function showData() {
   getTotal();
 }
 showData();
-//Delete product
+//----------Delete product-----------
 function deleteProduct(i) {
   dataProduct.splice(i, 1);
   localStorage.product = JSON.stringify(dataProduct);
   showData();
 }
-//Delete All
+//---------Delete All----------------
 function deleteAll() {
   localStorage.clear();
   dataProduct = [];
